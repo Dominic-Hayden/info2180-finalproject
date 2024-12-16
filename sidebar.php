@@ -31,70 +31,18 @@ $conn->close(); // Close the connection
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Users</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="dashboard.css"> <!-- Include existing dashboard CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
-        /* General Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            background-color: #f9fafb;
-            color: #333;
-        }
-
-        /* Sidebar Styles */
-        .sidebar {
-            width: 250px;
-            background-color: #1f2937;
-            color: white;
-            height: 100vh;
-            position: fixed;
-            left: 0;
-            top: 0;
-            padding: 20px 0;
-            overflow-y: auto;
-        }
-
-        .sidebar-header {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 20px;
-            font-weight: bold;
-        }
-
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .sidebar ul li {
-            margin-bottom: 15px;
-        }
-
-        .sidebar ul li a {
-            display: block;
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-            transition: background-color 0.3s ease;
-        }
-
-        .sidebar ul li a:hover {
-            background-color: #374151;
-        }
-
-        /* Main Content Styles */
+        /* Adjust main content for sidebar */
         .main-content {
-            margin-left: 250px; /* Space for sidebar */
+            margin-left: 220px; /* Match sidebar width */
             padding: 20px;
-            width: calc(100% - 250px);
+            background-color: #f9fafb;
+            min-height: 100vh; /* Full height */
         }
 
+        /* Header alignment */
         .header {
             display: flex;
             justify-content: space-between;
@@ -115,29 +63,30 @@ $conn->close(); // Close the connection
             text-decoration: none;
             border-radius: 5px;
             font-size: 14px;
+            transition: background-color 0.3s ease;
         }
 
         .add-button:hover {
             background-color: #3730a3;
         }
 
-        /* Table Styles */
+        /* Table styling */
         .user-table {
             width: 100%;
             border-collapse: collapse;
             background-color: #fff;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             border-radius: 5px;
-        }
-
-        .user-table thead {
-            background-color: #f3f4f6;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .user-table th, .user-table td {
             padding: 12px 15px;
             border: 1px solid #ddd;
             text-align: left;
+        }
+
+        .user-table thead {
+            background-color: #f3f4f6;
         }
 
         .user-table tbody tr:nth-child(even) {
@@ -150,23 +99,17 @@ $conn->close(); // Close the connection
     </style>
 </head>
 <body>
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <div class="sidebar-header">Dolphin CRM</div>
-        <ul>
-            <li><a href="dashboard.php"><i class="fas fa-home"></i> Home</a></li>
-            <li><a href="add_contact.php"><i class="fas fa-user-plus"></i> New Contact</a></li>
-            <li><a href="get_users.php"><i class="fas fa-users"></i> Users</a></li>
-            <li><a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-        </ul>
-    </div>
+    <!-- Include Sidebar -->
+    <?php include 'sidebar.php'; ?>
 
     <!-- Main Content -->
     <div class="main-content">
         <!-- Header -->
         <div class="header">
             <h1>Users</h1>
-            <a href="add_user.php" class="add-button"><i class="fas fa-plus"></i> Add User</a>
+            <a href="add_user.php" class="add-button">
+                <i class="fas fa-plus"></i> Add User
+            </a>
         </div>
 
         <!-- User Table -->
